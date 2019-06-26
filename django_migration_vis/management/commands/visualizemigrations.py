@@ -28,8 +28,8 @@ class Command(BaseCommand):
         for node in nodes:
             self._add_dependencies(node)
 
-    # @staticmethod
-    def _style_label(self, tupled_node):
+    @staticmethod
+    def _style_label(tupled_node):
         return '/'.join(tupled_node)
 
     @staticmethod
