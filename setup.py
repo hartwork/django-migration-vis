@@ -4,7 +4,7 @@
 
 import os
 
-from setuptools import setup
+from setuptools import find_packages, setup
 
 _description = (
     'Django management commands to visualize migration graphs'
@@ -29,9 +29,7 @@ if __name__ == '__main__':
             version='1.0.0',
             author='Heuna Kim',
             author_email='heynaheyna9@gmail.com',
-            packages=[
-                'django_migration_vis',
-            ],
+            packages=find_packages(exclude=('example', 'example.*')),
             classifiers=[
                 'Development Status :: 3 - Alpha',
                 'Framework :: Django',
