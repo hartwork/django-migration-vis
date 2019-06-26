@@ -1,3 +1,6 @@
+# Copyright (C) 2019 Heuna Kim (heynaheyna9@gmail.com)
+# Licensed under the MIT license
+
 from tempfile import NamedTemporaryFile
 
 from django.core.management.base import BaseCommand
