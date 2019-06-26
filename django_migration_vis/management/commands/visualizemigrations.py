@@ -1,7 +1,8 @@
+from tempfile import NamedTemporaryFile
+
 from django.core.management.base import BaseCommand
 from django.db.migrations.loader import MigrationLoader
 from graphviz import Digraph
-from tempfile import NamedTemporaryFile
 
 
 class Command(BaseCommand):
