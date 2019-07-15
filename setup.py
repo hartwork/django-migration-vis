@@ -26,7 +26,7 @@ if __name__ == '__main__':
             description=_description,
             long_description=_get_long_description(),
             license='MIT',
-            version='1.0.0',
+            version='2.0.0',
             author='Heuna Kim',
             author_email='heynaheyna9@gmail.com',
             packages=find_packages(exclude=('example', 'example.*')),
