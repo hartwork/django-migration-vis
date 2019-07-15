@@ -15,7 +15,7 @@ class Command(BaseCommand):
         comment = options['comment']
         self.picture = Digraph(comment=comment)
         save_loc = options['filename']
-        self.render(save_loc)
+        self._render(save_loc)
 
     def add_arguments(self, parser):
         parser.add_argument('--comment',
@@ -58,7 +58,7 @@ class Command(BaseCommand):
             else:
                 self._add_edges(dep, self._get_tuple(node))
 
-    def render(self, save_loc):
+    def _render(self, save_loc):
         self._create_digraph()
         if save_loc:
             self.picture.render(save_loc, view=False)
