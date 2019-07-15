@@ -1,4 +1,5 @@
 # Copyright (C) 2019 Heuna Kim (heynaheyna9@gmail.com)
+# Copyright (C) 2019 Sebastian Pipping (sebastian@pipping.org)
 # Licensed under the MIT license
 
 import random
