@@ -15,6 +15,8 @@ class Command(BaseCommand):
     def handle(self, *apps, **options):
         self._censor_cache = {}
         self._censor_enabled = bool(options['censor'])
+        if self._censor_enabled:
+            random.seed(options['random_seed'])
         self.graph = MigrationLoader(None).graph
         comment = options['comment']
         self.picture = Digraph(comment=comment)
@@ -27,6 +29,8 @@ class Command(BaseCommand):
         parser.add_argument('--censor',
                             action='store_true',
                             help='censor node names (e.g. for publishing)')
+        parser.add_argument('--random-seed', default=0, type=int,
+                            help='random seed (default: %(default)s)')
         parser.add_argument('filename', nargs='?',
                             help='a filename to write GraphViz contents to')
 
