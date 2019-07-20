@@ -55,7 +55,10 @@ class Command(BaseCommand):
         try:
             return self._censor_cache[text]
         except KeyError:
-            censored = self._censor(text)
+            while True:
+                censored = self._censor(text)
+                if censored not in self._censor_cache.values():
+                    break
             self._censor_cache[text] = censored
             return censored
 
