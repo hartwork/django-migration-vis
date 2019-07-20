@@ -45,11 +45,16 @@ class Command(BaseCommand):
     @staticmethod
     def _censor(text):
         res = []
-        for c in text:
-            if c not in '0123456789_':
-                c = chr(random.randint(ord('a'), ord('z')))
-            res.append(c)
-        return ''.join(res)
+        for word in text.split('_'):
+            if word not in ('auto', 'initial', 'squashed'):
+                chars = []
+                for c in word:
+                    if c not in '0123456789_':
+                        c = chr(random.randint(ord('a'), ord('z')))
+                    chars.append(c)
+                word = ''.join(chars)
+            res.append(word)
+        return '_'.join(res)
 
     def _censor_using_cache(self, text):
         try:
