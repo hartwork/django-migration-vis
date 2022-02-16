@@ -15,7 +15,7 @@ _project_url = 'https://github.com/hahey/django-migration-vis'
 
 def _get_long_description():
     readme_rst = os.path.join(os.path.dirname(__file__), 'README.rst')
-    with open(readme_rst, 'r') as f:
+    with open(readme_rst) as f:
         return f.read()
 
 
