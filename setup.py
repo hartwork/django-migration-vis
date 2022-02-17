@@ -15,7 +15,7 @@ _project_url = 'https://github.com/hahey/django-migration-vis'
 
 def _get_long_description():
     readme_rst = os.path.join(os.path.dirname(__file__), 'README.rst')
-    with open(readme_rst, 'r') as f:
+    with open(readme_rst) as f:
         return f.read()
 
 
@@ -37,8 +37,6 @@ if __name__ == '__main__':
                 'License :: OSI Approved :: MIT License',
                 'Natural Language :: English',
                 'Programming Language :: Python',
-                'Programming Language :: Python :: 3.5',
-                'Programming Language :: Python :: 3.6',
                 'Programming Language :: Python :: 3.7',
                 'Programming Language :: Python :: 3.8',
             ],
@@ -46,5 +44,5 @@ if __name__ == '__main__':
                 'Django',
                 'graphviz',
             ],
-            python_requires='>=3.5',
+            python_requires='>=3.7',
     )
