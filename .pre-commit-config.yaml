@@ -6,14 +6,18 @@ repos:
         args: [--py37-plus]
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v2.2.3
+    rev: v4.1.0
     hooks:
       - id: check-merge-conflict
       - id: end-of-file-fixer
-      - id: flake8
       - id: trailing-whitespace
 
-  - repo: https://github.com/pre-commit/mirrors-isort
-    rev: v4.3.21
+  - repo: https://github.com/pycqa/flake8
+    rev: 4.0.1
+    hooks:
+      - id: flake8
+
+  - repo: https://github.com/pycqa/isort
+    rev: 5.10.1
     hooks:
       - id: isort
