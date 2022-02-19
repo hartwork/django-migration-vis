@@ -1,0 +1,34 @@
+# https://github.com/pre-commit/action
+
+name: "pre-commit-hooks"
+
+on:
+  push:
+    branches:
+      - master
+  pull_request: ~
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      name: Checkout
+
+    - uses: actions/setup-python@v2
+      name: Install Python
+
+    - uses: pre-commit/action@v2.0.3
+      name: Check merge-conflict
+      with:
+        extra_args: check-merge-conflict --all-files
+
+    - uses: pre-commit/action@v2.0.3
+      name: Check end-of-file
+      with:
+        extra_args: end-of-file-fixer --all-files
+
+    - uses: pre-commit/action@v2.0.3
+      name: Check trailing-whitespace
+      with:
+        extra_args: trailing-whitespace --all-files
