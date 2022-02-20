@@ -1,6 +1,6 @@
 # https://github.com/pre-commit/action
 
-name: lint
+name: "pre-commit"
 
 on:
   push:
@@ -13,15 +13,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+      name: Checkout
 
     - uses: actions/setup-python@v2
+      name: Install Python
 
     - uses: pre-commit/action@v2.0.3
-      name: flake8 check
+      name: Run pre-commit checks
       with:
-        extra_args: flake8 --all-files
-
-    - uses: pre-commit/action@v2.0.3
-      name: isort check
-      with:
-        extra_args: isort --all-files
+        extra_args: --all-files
