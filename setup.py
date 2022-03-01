@@ -41,7 +41,7 @@ if __name__ == '__main__':
                 'Programming Language :: Python :: 3.8',
             ],
             install_requires=[
-                'Django',
+                'Django>=2.2',
                 'graphviz',
             ],
             python_requires='>=3.7',
