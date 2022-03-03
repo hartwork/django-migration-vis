@@ -8,8 +8,6 @@ class Migration(migrations.Migration):
     replaces = [('example', '0001_initial'),
                 ('example', '0002_auto_20190623_1501')]
 
-    dependencies = [
-    ]
+    dependencies = []
 
-    operations = [
-    ]
+    operations = []

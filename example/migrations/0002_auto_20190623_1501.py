@@ -9,5 +9,4 @@ class Migration(migrations.Migration):
         ('example', '0001_initial'),
     ]
 
-    operations = [
-    ]
+    operations = []
