@@ -29,14 +29,16 @@ class Command(BaseCommand):
         parser.add_argument('--censor',
                             action='store_true',
                             help='censor node names (e.g. for publishing)')
-        parser.add_argument('--random-seed', default=0, type=int,
+        parser.add_argument('--random-seed',
+                            default=0,
+                            type=int,
                             help='random seed (default: %(default)s)')
-        parser.add_argument('filename', nargs='?',
+        parser.add_argument('filename',
+                            nargs='?',
                             help='a filename to write GraphViz contents to')
 
     def _create_digraph(self):
-        nodes = sorted(self.graph.nodes.values(),
-                       key=self._get_tuple)
+        nodes = sorted(self.graph.nodes.values(), key=self._get_tuple)
         for node in nodes:
             self._add_node(node)
         for node in nodes:
@@ -88,11 +90,11 @@ class Command(BaseCommand):
     def _add_dependencies(self, node):
         for dep in node.dependencies:
             if dep[1] == '__first__':
-                self._add_edges(self.graph.root_nodes(dep[0])[0],
-                                self._get_tuple(node))
+                self._add_edges(
+                    self.graph.root_nodes(dep[0])[0], self._get_tuple(node))
             elif dep[1] == '__latest__':
-                self._add_edges(self.graph.leaf_nodes(dep[0])[0],
-                                self._get_tuple(node))
+                self._add_edges(
+                    self.graph.leaf_nodes(dep[0])[0], self._get_tuple(node))
             else:
                 self._add_edges(dep, self._get_tuple(node))
 
