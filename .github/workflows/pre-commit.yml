@@ -1,3 +1,7 @@
+# Copyright (C) 2022 Ülgen Sarıkavak (ulgensrkvk@gmail.com)
+# Copyright (C) 2022 Sebastian Pipping (sebastian@pipping.org)
+# Licensed under the MIT license
+
 # https://github.com/pre-commit/action
 
 name: "pre-commit"
