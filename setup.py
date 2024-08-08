@@ -36,14 +36,15 @@ if __name__ == '__main__':
             'License :: OSI Approved :: MIT License',
             'Natural Language :: English',
             'Programming Language :: Python',
-            'Programming Language :: Python :: 3.7',
             'Programming Language :: Python :: 3.8',
             'Programming Language :: Python :: 3.9',
             'Programming Language :: Python :: 3.10',
+            'Programming Language :: Python :: 3.11',
+            'Programming Language :: Python :: 3.12',
         ],
         install_requires=[
-            'Django>=2.2',
+            'Django>=4.2',
             'graphviz',
         ],
-        python_requires='>=3.7',
+        python_requires='>=3.8',
     )
