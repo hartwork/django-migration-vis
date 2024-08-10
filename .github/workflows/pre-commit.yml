@@ -7,8 +7,15 @@
 name: "pre-commit"
 
 on:
-  - push
-  - pull_request
+  pull_request:
+  push:
+  schedule:
+    - cron: '0 2 * * 5'  # Every Friday at 2am
+  workflow_dispatch:
+
+# Drop permissions to minimum for security
+permissions:
+  contents: read
 
 jobs:
   check:
@@ -22,5 +29,3 @@ jobs:
 
     - uses: pre-commit/action@646c83fcd040023954eafda54b4db0192ce70507  # v3.0.0
       name: Run pre-commit checks
-      with:
-        extra_args: --all-files
