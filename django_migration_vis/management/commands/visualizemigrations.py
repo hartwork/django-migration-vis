@@ -11,31 +11,37 @@ from graphviz import Digraph
 
 
 class Command(BaseCommand):
-
     def handle(self, *apps, **options):
         self._censor_cache = {}
-        self._censor_enabled = bool(options['censor'])
+        self._censor_enabled = bool(options["censor"])
         if self._censor_enabled:
-            random.seed(options['random_seed'])
+            random.seed(options["random_seed"])
         self.graph = MigrationLoader(None).graph
-        comment = options['comment']
+        comment = options["comment"]
         self.picture = Digraph(comment=comment)
-        save_loc = options['filename']
+        save_loc = options["filename"]
         self._render(save_loc)
 
     def add_arguments(self, parser):
-        parser.add_argument('--comment',
-                            help='optional comments/captions for the picture')
-        parser.add_argument('--censor',
-                            action='store_true',
-                            help='censor node names (e.g. for publishing)')
-        parser.add_argument('--random-seed',
-                            default=0,
-                            type=int,
-                            help='random seed (default: %(default)s)')
-        parser.add_argument('filename',
-                            nargs='?',
-                            help='a filename to write GraphViz contents to')
+        parser.add_argument(
+            "--comment", help="optional comments/captions for the picture"
+        )
+        parser.add_argument(
+            "--censor",
+            action="store_true",
+            help="censor node names (e.g. for publishing)",
+        )
+        parser.add_argument(
+            "--random-seed",
+            default=0,
+            type=int,
+            help="random seed (default: %(default)s)",
+        )
+        parser.add_argument(
+            "filename",
+            nargs="?",
+            help="a filename to write GraphViz contents to",
+        )
 
     def _create_digraph(self):
         nodes = sorted(self.graph.nodes.values(), key=self._get_tuple)
@@ -47,16 +53,16 @@ class Command(BaseCommand):
     @staticmethod
     def _censor(text):
         res = []
-        for word in text.split('_'):
-            if word not in ('auto', 'initial', 'squashed'):
+        for word in text.split("_"):
+            if word not in ("auto", "initial", "squashed"):
                 chars = []
                 for c in word:
-                    if c not in '0123456789_':
-                        c = chr(random.randint(ord('a'), ord('z')))
+                    if c not in "0123456789_":
+                        c = chr(random.randint(ord("a"), ord("z")))
                     chars.append(c)
-                word = ''.join(chars)
+                word = "".join(chars)
             res.append(word)
-        return '_'.join(res)
+        return "_".join(res)
 
     def _censor_using_cache(self, text):
         try:
@@ -73,7 +79,7 @@ class Command(BaseCommand):
         if self._censor_enabled:
             tupled_node = [self._censor_using_cache(e) for e in tupled_node]
 
-        return '/'.join(tupled_node)
+        return "/".join(tupled_node)
 
     @staticmethod
     def _get_tuple(node):
@@ -84,17 +90,20 @@ class Command(BaseCommand):
         self.picture.node(node_label, node_label)
 
     def _add_edges(self, nodeTo, nodeFrom):
-        self.picture.edge(self._style_label(nodeFrom),
-                          self._style_label(nodeTo))
+        self.picture.edge(
+            self._style_label(nodeFrom), self._style_label(nodeTo)
+        )
 
     def _add_dependencies(self, node):
         for dep in node.dependencies:
-            if dep[1] == '__first__':
+            if dep[1] == "__first__":
                 self._add_edges(
-                    self.graph.root_nodes(dep[0])[0], self._get_tuple(node))
-            elif dep[1] == '__latest__':
+                    self.graph.root_nodes(dep[0])[0], self._get_tuple(node)
+                )
+            elif dep[1] == "__latest__":
                 self._add_edges(
-                    self.graph.leaf_nodes(dep[0])[0], self._get_tuple(node))
+                    self.graph.leaf_nodes(dep[0])[0], self._get_tuple(node)
+                )
             else:
                 self._add_edges(dep, self._get_tuple(node))
 

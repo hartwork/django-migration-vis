@@ -22,7 +22,7 @@ repos:
     hooks:
       - id: isort
 
-  - repo: https://github.com/google/yapf
-    rev: v0.40.2
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.7.0
     hooks:
-      - id: yapf
+      - id: ruff-format
