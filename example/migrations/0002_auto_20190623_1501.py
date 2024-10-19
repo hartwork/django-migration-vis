@@ -4,9 +4,8 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('example', '0001_initial'),
+        ("example", "0001_initial"),
     ]
 
     operations = []
