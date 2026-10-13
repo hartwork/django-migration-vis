@@ -33,7 +33,6 @@ if __name__ == "__main__":
             "Development Status :: 3 - Alpha",
             "Framework :: Django",
             "Intended Audience :: Developers",
-            "License :: OSI Approved :: MIT License",
             "Natural Language :: English",
             "Programming Language :: Python",
             "Programming Language :: Python :: 3.11",
